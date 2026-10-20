@@ -14,31 +14,6 @@ API_URL = "https://backend.air.org.kz/v1/measurements/map"
 # Almaty Timezone Constant (UTC+5)
 ALMATY_TZ = timezone(timedelta(hours=5))
 
-# Factory & Industrial Regions (Coordinates & Surrounding Coverage Radius in Meters)
-INDUSTRIAL_ZONES = [
-    {
-        "name": "CHP-2 Power Plant Zone (TETS-2)",
-        "lat": 43.2625,
-        "lon": 76.7950,
-        "radius_m": 8000,
-        "description": "Major coal-fired power station & western industrial corridor",
-    },
-    {
-        "name": "CHP-1 Power Plant Zone (TETS-1)",
-        "lat": 43.2780,
-        "lon": 76.9280,
-        "radius_m": 5000,
-        "description": "Central heat & power station and rail industrial belt",
-    },
-    {
-        "name": "Alatau Industrial Zone",
-        "lat": 43.3200,
-        "lon": 76.8300,
-        "radius_m": 7000,
-        "description": "Northern manufacturing, logistics, and heavy industrial park",
-    },
-]
-
 
 def get_almaty_now():
     """Returns current datetime in Almaty timezone (UTC+5)."""
@@ -155,7 +130,7 @@ def extract_pm25_data(data):
 def render_folium_map(df, output_html=MAP_FILE):
     """
     Renders an interactive Folium map using API-key-free Esri & OpenStreetMap tile servers,
-    complete with real-time Almaty clock, day/night theme control, PM2.5 markers, factory region overlays, and spatial ML interpolation.
+    complete with real-time Almaty clock, day/night theme control, PM2.5 markers, and spatial ML interpolation.
     """
     geo_df = df.dropna(subset=["latitude", "longitude"]).copy()
 
@@ -173,30 +148,6 @@ def render_folium_map(df, output_html=MAP_FILE):
         tiles=None,
         zoom_control=True,
     )
-
-    # Add Factory & Industrial Zones with High-Visibility Outline (#00E5FF Cyan works in Day & Night mode)
-    factory_layer = folium.FeatureGroup(name="Industrial Zones").add_to(m)
-
-    for zone in INDUSTRIAL_ZONES:
-        popup_html = f"""
-        <div style="font-family: system-ui, -apple-system, sans-serif; font-size: 12px; line-height: 1.4; min-width: 180px;">
-            <h4 style="margin: 0 0 4px 0; color: #0284c7; border-bottom: 2px solid #00E5FF; padding-bottom: 2px;">🏭 {zone['name']}</h4>
-            <p style="margin: 4px 0; color: #334155;">{zone['description']}</p>
-            <b>Impact Radius:</b> {zone['radius_m'] / 1000:.1f} km
-        </div>
-        """
-        folium.Circle(
-            location=[zone["lat"], zone["lon"]],
-            radius=zone["radius_m"],
-            color="#00E5FF",        # Electric Cyan: Highly visible on both light & dark tile layers
-            weight=2.5,
-            dash_array="6, 6",
-            fill=True,
-            fill_color="#00E5FF",
-            fill_opacity=0.14,
-            popup=folium.Popup(popup_html, max_width=260),
-            tooltip=f"🏭 Industrial Zone: {zone['name']}",
-        ).add_to(factory_layer)
 
     latest_stations = (
         geo_df.sort_values(by=["date", "hour"], ascending=True)
@@ -459,10 +410,6 @@ def render_folium_map(df, output_html=MAP_FILE):
         <div class="legend-row"><span><i class="legend-dot" style="background:#FF0000;"></i>Unhealthy</span><span class="card-subtext">55.5 - 150.4</span></div>
         <div class="legend-row"><span><i class="legend-dot" style="background:#8F3F97;"></i>Very Unhealthy</span><span class="card-subtext">150.5 - 250.4</span></div>
         <div class="legend-row"><span><i class="legend-dot" style="background:#7E0023;"></i>Hazardous</span><span class="card-subtext">> 250.4</span></div>
-        <div class="legend-row" style="margin-top:6px; border-top:1px dashed rgba(150,150,150,0.3); padding-top:4px;">
-            <span><i class="legend-dot" style="background:#00E5FF; border-radius: 2px;"></i>Industrial Zone</span>
-            <span class="card-subtext">Dashed Outline</span>
-        </div>
     </div>
 
     <script>

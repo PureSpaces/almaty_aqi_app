@@ -1,27 +1,58 @@
 import json
+import math
 import os
 from datetime import datetime, timedelta, timezone
+from flask import Flask, render_template_string
 import folium
+import numpy as np
 import pandas as pd
 import requests
 
-# Config & File Paths
-API_KEY = ''
+app = Flask(__name__)
+
+# Configuration & Secrets
+API_KEY = os.environ.get("AAI_API_KEY")
 CSV_FILE = "almaty_pm25_data.csv"
-MAP_FILE = "almaty_pm25_map.html"
+FACTORY_CSV_FILE = "factory_pm25_predictions.csv"
 API_URL = "https://backend.air.org.kz/v1/measurements/map"
 
-# Almaty Timezone Constant (UTC+5)
 ALMATY_TZ = timezone(timedelta(hours=5))
+
+# Almaty Spatial Bounds
+ALMATY_SW = [43.10, 76.70]
+ALMATY_NE = [43.40, 77.15]
+
+# Factory & Industrial Zones
+INDUSTRIAL_ZONES = [
+    {
+        "name": "CHP-2 Power Plant Zone (TETS-2)",
+        "lat": 43.2625,
+        "lon": 76.7950,
+        "radius_m": 8000,
+        "description": "Major coal-fired power station & western industrial corridor",
+    },
+    {
+        "name": "CHP-1 Power Plant Zone (TETS-1)",
+        "lat": 43.2780,
+        "lon": 76.9280,
+        "radius_m": 5000,
+        "description": "Central heat & power station and rail industrial belt",
+    },
+    {
+        "name": "Alatau Industrial Zone",
+        "lat": 43.3200,
+        "lon": 76.8300,
+        "radius_m": 7000,
+        "description": "Northern manufacturing, logistics, and heavy industrial park",
+    },
+]
 
 
 def get_almaty_now():
-    """Returns current datetime in Almaty timezone (UTC+5)."""
     return datetime.now(timezone.utc).astimezone(ALMATY_TZ)
 
 
 def parse_timestamp(ts_str):
-    """Splits ISO timestamp string into separate date (YYYY-MM-DD) and hour (HH:00) strings."""
     if not ts_str:
         return None, None
     try:
@@ -33,10 +64,6 @@ def parse_timestamp(ts_str):
 
 
 def get_aqi_info(pm25):
-    """
-    Returns (color_hex, text_color_hex, status_label, rgb_tuple_str)
-    based on US EPA PM2.5 standards.
-    """
     if pm25 is None or pd.isna(pm25):
         return "#808080", "#FFFFFF", "No Data", "128,128,128"
     elif pm25 <= 12.0:
@@ -54,10 +81,6 @@ def get_aqi_info(pm25):
 
 
 def extract_pm25_data(data):
-    """
-    Parses response payload from backend.air.org.kz/v1/measurements/map.
-    Extracts station metadata, coordinates, timestamp, and PM2.5 concentration.
-    """
     records = []
     payload = data.get("data", []) if isinstance(data, dict) else data
     items = payload if isinstance(payload, list) else [payload]
@@ -72,7 +95,6 @@ def extract_pm25_data(data):
             or item.get("title")
             or "Unknown Station"
         )
-
         pm25 = (
             item.get("pm25_avg")
             or item.get("pm25")
@@ -113,513 +135,24 @@ def extract_pm25_data(data):
         except (ValueError, TypeError):
             lat, lon = None, None
 
-        records.append(
-            {
-                "date": date_str,
-                "hour": hour_str,
-                "station_name": station_name,
-                "pm2.5": pm25,
-                "latitude": lat,
-                "longitude": lon,
-            }
-        )
-
+        records.append({
+            "date": date_str,
+            "hour": hour_str,
+            "station_name": station_name,
+            "pm2.5": pm25,
+            "latitude": lat,
+            "longitude": lon,
+        })
     return records
 
 
-def render_folium_map(df, output_html=MAP_FILE):
-    """
-    Renders an interactive Folium map using API-key-free Esri & OpenStreetMap tile servers,
-    complete with real-time Almaty clock, day/night theme control, PM2.5 markers, and spatial ML interpolation.
-    """
-    geo_df = df.dropna(subset=["latitude", "longitude"]).copy()
-
-    if geo_df.empty:
-        print("⚠️ No valid station coordinates found to draw on the map.")
-        return
-
-    center_lat = geo_df["latitude"].mean() if not geo_df.empty else 43.2389
-    center_lon = geo_df["longitude"].mean() if not geo_df.empty else 76.8897
-
-    # Initialize map without built-in tiles (JS manager initializes reliable free tile layers)
-    m = folium.Map(
-        location=[center_lat, center_lon],
-        zoom_start=12,
-        tiles=None,
-        zoom_control=True,
-    )
-
-    latest_stations = (
-        geo_df.sort_values(by=["date", "hour"], ascending=True)
-        .groupby("station_name")
-        .last()
-        .reset_index()
-    )
-
-    stations_list = []
-
-    for idx, row in latest_stations.iterrows():
-        pm25 = row["pm2.5"]
-        color, text_color, status, rgb_str = get_aqi_info(pm25)
-        pm_val_str = f"{pm25:.1f}" if pm25 is not None else "N/A"
-
-        if pm25 is not None and not pd.isna(pm25):
-            stations_list.append(
-                {
-                    "name": str(row["station_name"]),
-                    "lat": float(row["latitude"]),
-                    "lon": float(row["longitude"]),
-                    "pm25": float(pm25),
-                }
-            )
-
-        popup_content = f"""
-        <div style="font-family: system-ui, -apple-system, sans-serif; font-size: 13px; line-height: 1.5; min-width: 200px;">
-            <h4 style="margin: 0 0 6px 0; color: #111827; border-bottom: 2px solid {color}; padding-bottom: 4px;">{row['station_name']}</h4>
-            <b>PM2.5:</b> <span style="font-size:14px; font-weight:bold;">{pm_val_str} µg/m³</span><br>
-            <b>Status:</b> <span style="color:{color}; font-weight:bold; background:rgba({rgb_str},0.15); padding:2px 6px; border-radius:4px;">{status}</span><br>
-            <b>Last Updated:</b> {row['date']} {row['hour']}<br>
-            <b>Coords:</b> {row['latitude']:.4f}, {row['longitude']:.4f}
-        </div>
-        """
-
-        flashy_icon_html = f"""
-        <div class="flashy-station-marker" style="--aqi-color: {color}; --aqi-rgb: {rgb_str};">
-            <div class="pulse-halo"></div>
-            <div class="badge-core" style="background-color: {color}; color: {text_color};">
-                {pm_val_str}
-            </div>
-        </div>
-        """
-
-        folium.map.Marker(
-            location=[row["latitude"], row["longitude"]],
-            icon=folium.DivIcon(
-                html=flashy_icon_html,
-                icon_size=(48, 48),
-                icon_anchor=(24, 24),
-            ),
-            popup=folium.Popup(popup_content, max_width=300),
-            tooltip=f"{row['station_name']}: {pm_val_str} µg/m³ ({status})",
-        ).add_to(m)
-
-    js_known_data = json.dumps(stations_list)
-
-    custom_assets_html = f"""
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
-
-        .leaflet-container {{
-            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif !important;
-            background-color: #0f172a;
-        }}
-
-        /* Dark Mode Tile Inversion Fallback */
-        .theme-dark .leaflet-tile-pane {{
-            filter: brightness(0.75) contrast(1.2) saturate(0.8);
-        }}
-
-        .flashy-station-marker {{
-            position: relative;
-            width: 48px;
-            height: 48px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }}
-
-        .pulse-halo {{
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 42px;
-            height: 42px;
-            margin-top: -21px;
-            margin-left: -21px;
-            border-radius: 50%;
-            background: rgba(var(--aqi-rgb), 0.4);
-            animation: haloPulse 2.2s infinite ease-in-out;
-            pointer-events: none;
-        }}
-
-        @keyframes haloPulse {{
-            0% {{
-                transform: scale(0.8);
-                opacity: 0.9;
-                box-shadow: 0 0 0 0 rgba(var(--aqi-rgb), 0.7);
-            }}
-            70% {{
-                transform: scale(1.5);
-                opacity: 0;
-                box-shadow: 0 0 18px 12px rgba(var(--aqi-rgb), 0);
-            }}
-            100% {{
-                transform: scale(0.8);
-                opacity: 0;
-            }}
-        }}
-
-        .badge-core {{
-            position: relative;
-            z-index: 2;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: -0.2px;
-            border: 2.5px solid #ffffff;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35), 0 0 12px rgba(var(--aqi-rgb), 0.6);
-            transition: transform 0.2s ease;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
-        }}
-
-        .flashy-station-marker:hover .badge-core {{
-            transform: scale(1.2);
-        }}
-
-        #ui-control-card {{
-            position: fixed;
-            top: 16px;
-            right: 16px;
-            width: 280px;
-            border-radius: 14px;
-            padding: 16px;
-            z-index: 9999;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-            transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }}
-
-        .theme-light #ui-control-card {{
-            background: rgba(255, 255, 255, 0.92);
-            color: #1e293b;
-        }}
-        .theme-light .card-subtext {{ color: #64748b; }}
-        .theme-light .pill-bg {{ background: #f1f5f9; border: 1px solid #e2e8f0; }}
-
-        .theme-dark #ui-control-card {{
-            background: rgba(15, 23, 42, 0.92);
-            color: #f8fafc;
-            border-color: rgba(255, 255, 255, 0.12);
-        }}
-        .theme-dark .card-subtext {{ color: #94a3b8; }}
-        .theme-dark .pill-bg {{ background: #1e293b; border: 1px solid #334155; }}
-
-        .clock-badge {{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 8px 12px;
-            border-radius: 10px;
-            font-size: 12px;
-            font-weight: 700;
-            margin-bottom: 12px;
-        }}
-
-        .mode-btn-group {{
-            display: flex;
-            gap: 4px;
-            margin-bottom: 12px;
-            background: rgba(0, 0, 0, 0.08);
-            padding: 3px;
-            border-radius: 8px;
-        }}
-        .mode-btn {{
-            flex: 1;
-            border: none;
-            padding: 6px 8px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            background: transparent;
-            color: inherit;
-            opacity: 0.7;
-        }}
-        .mode-btn.active {{
-            background: #3b82f6;
-            color: #ffffff;
-            opacity: 1;
-            box-shadow: 0 2px 6px rgba(59, 130, 246, 0.4);
-        }}
-
-        .time-slider {{
-            width: 100%;
-            accent-color: #3b82f6;
-            cursor: pointer;
-        }}
-
-        .legend-row {{
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 11px;
-            margin-bottom: 4px;
-            font-weight: 600;
-        }}
-        .legend-dot {{
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 6px;
-        }}
-    </style>
-
-    <div id="ui-control-card">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-            <b style="font-size: 15px;">Almaty AQI Dashboard</b>
-            <span id="day-night-icon" style="font-size: 18px;">☀️</span>
-        </div>
-        <div class="card-subtext" style="font-size: 11px; margin-bottom: 10px;">Live PM2.5 & Spatial ML Model</div>
-
-        <div class="clock-badge pill-bg">
-            <span>🇰🇿 Almaty Time</span>
-            <span id="almaty-clock" style="color:#3b82f6;">--:--:--</span>
-        </div>
-
-        <div class="mode-btn-group">
-            <button class="mode-btn active" id="btn-auto" onclick="setThemeMode('auto')">Auto</button>
-            <button class="mode-btn" id="btn-day" onclick="setThemeMode('day')">☀️ Day</button>
-            <button class="mode-btn" id="btn-night" onclick="setThemeMode('night')">🌙 Night</button>
-        </div>
-
-        <div>
-            <div style="display:flex; justify-content:space-between; font-size:10px;" class="card-subtext">
-                <span>Bright (06:00)</span>
-                <span id="slider-hour-label" style="font-weight:bold;">Auto Mode</span>
-                <span>Dark (22:00)</span>
-            </div>
-            <input type="range" min="0" max="23" value="12" id="time-range-slider" class="time-slider" oninput="onSliderChange(this.value)">
-        </div>
-
-        <hr style="border:none; border-top: 1px solid rgba(150,150,150,0.2); margin: 10px 0;">
-
-        <div style="font-size:11px; font-weight:700; margin-bottom:6px;">AQI PM2.5 Reference</div>
-        <div class="legend-row"><span><i class="legend-dot" style="background:#00E400;"></i>Good</span><span class="card-subtext">0 - 12 µg/m³</span></div>
-        <div class="legend-row"><span><i class="legend-dot" style="background:#FFFF00;"></i>Moderate</span><span class="card-subtext">12.1 - 35.4</span></div>
-        <div class="legend-row"><span><i class="legend-dot" style="background:#FF7E00;"></i>Sensitive Groups</span><span class="card-subtext">35.5 - 55.4</span></div>
-        <div class="legend-row"><span><i class="legend-dot" style="background:#FF0000;"></i>Unhealthy</span><span class="card-subtext">55.5 - 150.4</span></div>
-        <div class="legend-row"><span><i class="legend-dot" style="background:#8F3F97;"></i>Very Unhealthy</span><span class="card-subtext">150.5 - 250.4</span></div>
-        <div class="legend-row"><span><i class="legend-dot" style="background:#7E0023;"></i>Hazardous</span><span class="card-subtext">> 250.4</span></div>
-    </div>
-
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {{
-        var map = null;
-        for (var key in window) {{
-            if (key.startsWith("map_") && window[key] instanceof L.Map) {{
-                map = window[key];
-                break;
-            }}
-        }}
-        if (!map) return;
-
-        // 100% Free Public Tiles (Zero CARTO Key Dependency)
-        var esriStreet = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{{z}}/{{y}}/{{x}}", {{
-            attribution: 'Esri, DeLorme, NAVTEQ',
-            maxZoom: 18
-        }});
-
-        var esriDark = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{{z}}/{{y}}/{{x}}", {{
-            attribution: 'Esri, HERE, Garmin, USGS',
-            maxZoom: 16
-        }});
-
-        var osmFallback = L.tileLayer("https://tile.openstreetmap.org/{{z}}/{{x}}/{{y}}.png", {{
-            attribution: '&copy; OpenStreetMap contributors',
-            maxZoom: 19
-        }});
-
-        // Auto Fallback Event Handler
-        function attachFallback(layer) {{
-            layer.on('tileerror', function() {{
-                if (!map.hasLayer(osmFallback)) {{
-                    map.removeLayer(layer);
-                    osmFallback.addTo(map);
-                }}
-            }});
-        }}
-        attachFallback(esriStreet);
-        attachFallback(esriDark);
-
-        var activeTile = null;
-        var currentMode = "auto";
-        var knownStations = {js_known_data};
-
-        function updateAlmatyClock() {{
-            var now = new Date();
-            var options = {{ timeZone: "Asia/Almaty", hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }};
-            var dateOptions = {{ timeZone: "Asia/Almaty", year: 'numeric', month: 'short', day: 'numeric' }};
-            
-            var timeStr = new Intl.DateTimeFormat([], options).format(now);
-            var dateStr = new Intl.DateTimeFormat([], dateOptions).format(now);
-
-            var clockEl = document.getElementById("almaty-clock");
-            if (clockEl) clockEl.innerText = timeStr + " (" + dateStr + ")";
-
-            if (currentMode === "auto") {{
-                var almatyHour = parseInt(new Intl.DateTimeFormat([], {{ timeZone: "Asia/Almaty", hour: 'numeric', hour12: false }}).format(now), 10);
-                applyThemeForHour(almatyHour);
-                document.getElementById("time-range-slider").value = almatyHour;
-                document.getElementById("slider-hour-label").innerText = "Auto (" + almatyHour + ":00)";
-            }}
-        }}
-
-        function applyThemeForHour(hour) {{
-            var isDaytime = (hour >= 6 && hour < 18);
-            setUITheme(isDaytime);
-        }}
-
-        function setUITheme(isDay) {{
-            var body = document.body;
-            var dayNightIcon = document.getElementById("day-night-icon");
-
-            if (isDay) {{
-                if (activeTile !== esriStreet) {{
-                    if (activeTile) map.removeLayer(activeTile);
-                    esriStreet.addTo(map);
-                    activeTile = esriStreet;
-                }}
-                body.classList.remove("theme-dark");
-                body.classList.add("theme-light");
-                if (dayNightIcon) dayNightIcon.innerText = "☀️";
-            }} else {{
-                if (activeTile !== esriDark) {{
-                    if (activeTile) map.removeLayer(activeTile);
-                    esriDark.addTo(map);
-                    activeTile = esriDark;
-                }}
-                body.classList.remove("theme-light");
-                body.classList.add("theme-dark");
-                if (dayNightIcon) dayNightIcon.innerText = "🌙";
-            }}
-        }}
-
-        window.setThemeMode = function(mode) {{
-            currentMode = mode;
-            document.querySelectorAll(".mode-btn").forEach(btn => btn.classList.remove("active"));
-            document.getElementById("btn-" + mode).classList.add("active");
-
-            if (mode === "day") {{
-                setUITheme(true);
-                document.getElementById("slider-hour-label").innerText = "Manual Day";
-            }} else if (mode === "night") {{
-                setUITheme(false);
-                document.getElementById("slider-hour-label").innerText = "Manual Night";
-            }} else {{
-                updateAlmatyClock();
-            }}
-        }};
-
-        window.onSliderChange = function(hour) {{
-            currentMode = "manual";
-            document.querySelectorAll(".mode-btn").forEach(btn => btn.classList.remove("active"));
-            document.getElementById("slider-hour-label").innerText = hour + ":00 Almaty";
-            applyThemeForHour(parseInt(hour, 10));
-        }};
-
-        setInterval(updateAlmatyClock, 1000);
-        updateAlmatyClock();
-
-        // Inverse Distance Weighting (IDW) AI Interpolation
-        function predictPM25(lat, lng) {{
-            if (!knownStations || knownStations.length === 0) return 0.0;
-            var num = 0.0, den = 0.0, p = 2.0;
-            for (var i = 0; i < knownStations.length; i++) {{
-                var st = knownStations[i];
-                var d = Math.sqrt(Math.pow(lat - st.lat, 2) + Math.pow(lng - st.lon, 2));
-                if (d < 0.0001) return st.pm25;
-                var w = 1.0 / Math.pow(d, p);
-                num += w * st.pm25;
-                den += w;
-            }}
-            return den === 0 ? 0.0 : num / den;
-        }}
-
-        function getCategory(val) {{
-            if (val <= 12.0) return {{ text: "Good", color: "#00E400" }};
-            if (val <= 35.4) return {{ text: "Moderate", color: "#eab308" }};
-            if (val <= 55.4) return {{ text: "Sensitive Groups", color: "#f97316" }};
-            if (val <= 150.4) return {{ text: "Unhealthy", color: "#ef4444" }};
-            if (val <= 250.4) return {{ text: "Very Unhealthy", color: "#8F3F97" }};
-            return {{ text: "Hazardous", color: "#7E0023" }};
-        }}
-
-        var tooltipDiv = document.createElement("div");
-        tooltipDiv.id = "ai-hover-card";
-        tooltipDiv.style.position = "absolute";
-        tooltipDiv.style.display = "none";
-        tooltipDiv.style.zIndex = "10000";
-        tooltipDiv.style.background = "rgba(15, 23, 42, 0.94)";
-        tooltipDiv.style.color = "#ffffff";
-        tooltipDiv.style.padding = "10px 14px";
-        tooltipDiv.style.borderRadius = "10px";
-        tooltipDiv.style.boxShadow = "0 8px 24px rgba(0,0,0,0.4)";
-        tooltipDiv.style.fontFamily = "system-ui, -apple-system, sans-serif";
-        tooltipDiv.style.fontSize = "12px";
-        tooltipDiv.style.pointerEvents = "none";
-        tooltipDiv.style.border = "1px solid rgba(255,255,255,0.15)";
-        document.body.appendChild(tooltipDiv);
-
-        map.on("mousemove", function(e) {{
-            var lat = e.latlng.lat;
-            var lng = e.latlng.lng;
-            var predictedVal = predictPM25(lat, lng);
-            var cat = getCategory(predictedVal);
-
-            tooltipDiv.innerHTML = `
-                <div style="display:flex; align-items:center; gap:6px; margin-bottom:4px; font-weight:700; color:#a855f7;">
-                    <span>🤖</span> <span>AI SPATIAL MODEL</span>
-                </div>
-                <div style="font-size:17px; font-weight:800; margin-bottom:2px;">
-                    ${{predictedVal.toFixed(1)}} <span style="font-size:11px; font-weight:normal;">µg/m³</span>
-                </div>
-                <div style="display:inline-block; padding:2px 8px; border-radius:4px; font-weight:700; font-size:10px; background:${{cat.color}}; color:#fff; margin-bottom:4px;">
-                    ${{cat.text}}
-                </div>
-                <div style="color:#94a3b8; font-size:10px;">
-                    Lat: ${{lat.toFixed(4)}}, Lon: ${{lng.toFixed(4)}}
-                </div>
-            `;
-
-            tooltipDiv.style.left = (e.originalEvent.pageX + 15) + "px";
-            tooltipDiv.style.top = (e.originalEvent.pageY + 15) + "px";
-            tooltipDiv.style.display = "block";
-        }});
-
-        map.on("mouseout", function() {{
-            tooltipDiv.style.display = "none";
-        }});
-    }});
-    </script>
-    """
-
-    m.get_root().html.add_child(folium.Element(custom_assets_html))
-    m.save(output_html)
-    print(f"🗺 Map generated successfully: {os.path.abspath(output_html)}")
-
-
-def fetch_and_update():
+def fetch_and_update_data():
+    """Fetches live API data and appends to local historical CSV."""
     if not API_KEY:
-        print("⚠ Warning: API_KEY environment variable is not set. Reading local CSV...")
-        if os.path.exists(CSV_FILE):
-            df = pd.read_csv(CSV_FILE)
-            render_folium_map(df)
-        else:
-            print("❌ Error: No local CSV found and API_KEY is missing.")
+        print("⚠ Warning: AAI_API_KEY environment variable is missing. Skipping API fetch.")
         return
 
     headers = {"x-api-key": API_KEY, "Accept": "application/json"}
-
     try:
         response = requests.get(API_URL, headers=headers, timeout=15)
         response.raise_for_status()
@@ -628,7 +161,7 @@ def fetch_and_update():
         new_df = pd.DataFrame(records)
 
         if new_df.empty:
-            print("⚠ API returned empty station list.")
+            print("⚠ API returned empty dataset.")
             return
 
         if os.path.exists(CSV_FILE):
@@ -643,13 +176,300 @@ def fetch_and_update():
             combined_df = new_df
 
         combined_df.to_csv(CSV_FILE, index=False)
-        print(f"✅ Dataset updated ({len(new_df)} station readings fetched).")
+        print(f"✅ Historical dataset updated: {len(combined_df)} total records stored.")
 
-        render_folium_map(combined_df)
+        # Log spatial industrial predictions for new hourly slice
+        log_factory_predictions(combined_df)
 
     except requests.exceptions.RequestException as e:
         print(f"❌ API Request Failed: {e}")
 
 
+def log_factory_predictions(df):
+    """Generates and appends radial industrial zone predictions per hour."""
+    geo_df = df.dropna(subset=["latitude", "longitude", "pm2.5"]).copy()
+    if geo_df.empty:
+        return
+
+    latest_time = geo_df.sort_values(by=["date", "hour"]).iloc[-1]
+    date_str, hour_str = latest_time["date"], latest_time["hour"]
+
+    hour_df = geo_df[(geo_df["date"] == date_str) & (geo_df["hour"] == hour_str)]
+    known_stations = [
+        {"lat": float(r["latitude"]), "lon": float(r["longitude"]), "pm25": float(r["pm2.5"])}
+        for _, r in hour_df.iterrows()
+    ]
+
+    records = []
+    for factory in INDUSTRIAL_ZONES:
+        max_r_km = factory["radius_m"] / 1000.0
+        for r_km in np.arange(0, max_r_km + 0.1, 1.0):
+            num_angles = 1 if r_km == 0 else max(8, int(math.pi * 2 * r_km))
+            for angle in np.linspace(0, 360, num_angles, endpoint=False):
+                rad = math.radians(angle)
+                s_lat = factory["lat"] + (r_km * math.cos(rad)) / 111.0
+                s_lon = factory["lon"] + (r_km * math.sin(rad)) / 81.0
+
+                # IDW Prediction
+                num, den = 0.0, 0.0
+                for st in known_stations:
+                    d = math.sqrt((s_lat - st["lat"]) ** 2 + (s_lon - st["lon"]) ** 2)
+                    if d < 0.0001:
+                        pred_pm25 = st["pm25"]
+                        break
+                    w = 1.0 / (d ** 2.0)
+                    num += w * st["pm25"]
+                    den += w
+                else:
+                    pred_pm25 = num / den if den != 0 else 0.0
+
+                _, _, status, _ = get_aqi_info(pred_pm25)
+                records.append({
+                    "date": date_str,
+                    "hour": hour_str,
+                    "factory_name": factory["name"],
+                    "sample_lat": round(s_lat, 5),
+                    "sample_lon": round(s_lon, 5),
+                    "distance_km": round(r_km, 2),
+                    "predicted_pm25": round(pred_pm25, 2),
+                    "aqi_status": status,
+                })
+
+    pred_df = pd.DataFrame(records)
+    if os.path.exists(FACTORY_CSV_FILE):
+        existing_pred = pd.read_csv(FACTORY_CSV_FILE)
+        combined_pred = pd.concat([existing_pred, pred_df], ignore_index=True)
+        combined_pred.drop_duplicates(
+            subset=["date", "hour", "factory_name", "sample_lat", "sample_lon"],
+            keep="last",
+            inplace=True,
+        )
+    else:
+        combined_pred = pred_df
+
+    combined_pred.to_csv(FACTORY_CSV_FILE, index=False)
+
+
+def generate_map_html():
+    """Builds the interactive map HTML with full historical timeline scrubbing capabilities."""
+    if not os.path.exists(CSV_FILE):
+        return "<h3>No historical data found. Please run the data fetcher.</h3>"
+
+    df = pd.read_csv(CSV_FILE).dropna(subset=["latitude", "longitude", "pm2.5"])
+    df["timestamp_key"] = df["date"] + " " + df["hour"]
+
+    # Group records by hourly timestamps
+    timestamps = sorted(df["timestamp_key"].unique())
+    timeline_data = {}
+
+    for ts in timestamps:
+        slice_df = df[df["timestamp_key"] == ts]
+        timeline_data[ts] = [
+            {
+                "name": str(r["station_name"]),
+                "lat": float(r["latitude"]),
+                "lon": float(r["longitude"]),
+                "pm25": float(r["pm2.5"]),
+            }
+            for _, r in slice_df.iterrows()
+        ]
+
+    m = folium.Map(
+        location=[43.2389, 76.8897],
+        zoom_start=12,
+        tiles=None,
+        zoom_control=True,
+    )
+
+    # Industrial Zone Overlays
+    factory_layer = folium.FeatureGroup(name="Industrial Zones").add_to(m)
+    for zone in INDUSTRIAL_ZONES:
+        folium.Circle(
+            location=[zone["lat"], zone["lon"]],
+            radius=zone["radius_m"],
+            color="#00E5FF",
+            weight=2.5,
+            dash_array="6, 6",
+            fill=True,
+            fill_color="#00E5FF",
+            fill_opacity=0.12,
+            tooltip=f"🏭 Industrial Zone: {zone['name']}",
+        ).add_to(factory_layer)
+
+    js_timeline_json = json.dumps(timeline_data)
+    js_timestamps_json = json.dumps(timestamps)
+
+    custom_html = f"""
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+        .leaflet-container {{ font-family: 'Plus Jakarta Sans', sans-serif !important; background-color: #0f172a; }}
+        .theme-dark .leaflet-tile-pane {{ filter: brightness(0.75) contrast(1.2) saturate(0.8); }}
+
+        .custom-pm25-badge {{
+            background: transparent !important;
+            border: none !important;
+        }}
+
+        .badge-core {{
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: -0.2px;
+            border: 2.5px solid #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }}
+
+        #ui-control-card {{
+            position: fixed; top: 16px; right: 16px; width: 300px; border-radius: 14px; padding: 16px;
+            z-index: 9999; backdrop-filter: blur(12px); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }}
+        .theme-light #ui-control-card {{ background: rgba(255, 255, 255, 0.92); color: #1e293b; }}
+        .theme-dark #ui-control-card {{ background: rgba(15, 23, 42, 0.92); color: #f8fafc; border-color: rgba(255, 255, 255, 0.12); }}
+        .time-slider {{ width: 100%; accent-color: #3b82f6; cursor: pointer; }}
+    </style>
+
+    <div id="ui-control-card">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+            <b style="font-size:15px;">Almaty AQI Dashboard</b>
+            <span id="theme-icon">☀️</span>
+        </div>
+        <div style="font-size:11px; margin-bottom:10px; opacity:0.8;">Live & Historical ML Timeline</div>
+
+        <div style="padding:8px; border-radius:8px; background:rgba(59,130,246,0.1); margin-bottom:10px; font-size:12px; font-weight:700;">
+            📅 Selected Hour: <span id="active-time-label" style="color:#3b82f6;">Loading...</span>
+        </div>
+
+        <div>
+            <label style="font-size:11px; font-weight:700;">Historical Timeline Scrubbing</label>
+            <input type="range" min="0" max="{max(0, len(timestamps) - 1)}" value="{max(0, len(timestamps) - 1)}" id="timeline-slider" class="time-slider" oninput="onTimelineChange(this.value)">
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {{
+        var map = null;
+        for (var key in window) {{
+            if (key.startsWith("map_") && window[key] instanceof L.Map) {{
+                map = window[key]; break;
+            }}
+        }}
+        if (!map) return;
+
+        var esriStreet = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{{z}}/{{y}}/{{x}}");
+        var esriDark = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{{z}}/{{y}}/{{x}}");
+        esriStreet.addTo(map);
+
+        var timelineData = {js_timeline_json};
+        var timestamps = {js_timestamps_json};
+        var activeMarkers = [];
+        var currentStations = [];
+
+        function renderHour(index) {{
+            var tsKey = timestamps[index];
+            document.getElementById("active-time-label").innerText = tsKey;
+            currentStations = timelineData[tsKey] || [];
+
+            // Clear previous station markers
+            activeMarkers.forEach(m => map.removeLayer(m));
+            activeMarkers = [];
+
+            currentStations.forEach(st => {{
+                var catColor = getAQIColor(st.pm25);
+                var textColor = getTextColor(st.pm25);
+                var pmValStr = st.pm25.toFixed(1);
+
+                var badgeIcon = L.divIcon({{
+                    className: 'custom-pm25-badge',
+                    html: '<div class="badge-core" style="background-color:' + catColor + '; color:' + textColor + ';">' + pmValStr + '</div>',
+                    iconSize: [36, 36],
+                    iconAnchor: [18, 18]
+                }});
+
+                var marker = L.marker([st.lat, st.lon], {{ icon: badgeIcon }})
+                    .bindTooltip(st.name + ": " + pmValStr + " µg/m³");
+                
+                marker.addTo(map);
+                activeMarkers.push(marker);
+            }});
+        }}
+
+        function getAQIColor(val) {{
+            if (val <= 12.0) return "#00E400";
+            if (val <= 35.4) return "#FFFF00";
+            if (val <= 55.4) return "#FF7E00";
+            if (val <= 150.4) return "#FF0000";
+            if (val <= 250.4) return "#8F3F97";
+            return "#7E0023";
+        }}
+
+        function getTextColor(val) {{
+            if (val <= 35.4) return "#000000";
+            return "#FFFFFF";
+        }}
+
+        window.onTimelineChange = function(idx) {{
+            renderHour(parseInt(idx, 10));
+        }};
+
+        // Hover AI Prediction Engine
+        var tooltipDiv = document.createElement("div");
+        tooltipDiv.style.position = "absolute"; tooltipDiv.style.display = "none";
+        tooltipDiv.style.zIndex = "10000"; tooltipDiv.style.background = "rgba(15,23,42,0.94)";
+        tooltipDiv.style.color = "#fff"; tooltipDiv.style.padding = "8px 12px";
+        tooltipDiv.style.borderRadius = "8px"; tooltipDiv.style.pointerEvents = "none";
+        document.body.appendChild(tooltipDiv);
+
+        map.on("mousemove", function(e) {{
+            var lat = e.latlng.lat, lng = e.latlng.lng;
+            if (lat < 43.10 || lat > 43.40 || lng < 76.70 || lng > 77.15) {{
+                tooltipDiv.style.display = "none"; return;
+            }}
+            var predVal = predictIDW(lat, lng, currentStations);
+            tooltipDiv.innerHTML = "<b>🤖 AI Spatial Prediction</b><br>" + predVal.toFixed(1) + " µg/m³";
+            tooltipDiv.style.left = (e.originalEvent.pageX + 15) + "px";
+            tooltipDiv.style.top = (e.originalEvent.pageY + 15) + "px";
+            tooltipDiv.style.display = "block";
+        }});
+
+        function predictIDW(lat, lng, stations) {{
+            if (!stations || stations.length === 0) return 0.0;
+            var num = 0.0, den = 0.0;
+            for (var i = 0; i < stations.length; i++) {{
+                var d = Math.sqrt(Math.pow(lat - stations[i].lat, 2) + Math.pow(lng - stations[i].lon, 2));
+                if (d < 0.0001) return stations[i].pm25;
+                var w = 1.0 / Math.pow(d, 2.0);
+                num += w * stations[i].pm25; den += w;
+            }}
+            return den === 0 ? 0.0 : num / den;
+        }}
+
+        if (timestamps.length > 0) renderHour(timestamps.length - 1);
+    }});
+    </script>
+    """
+
+    m.get_root().html.add_child(folium.Element(custom_html))
+    return m._repr_html_()
+
+
+@app.route("/")
+def index():
+    return render_template_string(generate_map_html())
+
+
+@app.route("/cron/fetch", methods=["GET", "POST"])
+def cron_trigger():
+    fetch_and_update_data()
+    return {"status": "success", "message": "Hourly data updated successfully."}
+
+
 if __name__ == "__main__":
-    fetch_and_update()
+    fetch_and_update_data()
+    app.run(host="127.0.0.1", port=5000, debug=True)

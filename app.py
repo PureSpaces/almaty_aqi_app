@@ -471,17 +471,15 @@ def cron_trigger():
 
 
 if __name__ == "__main__":
+    # 1. Fetch latest data and update CSVs
     fetch_and_update_data()
-    # 2. Generate the HTML map string
-    map_html = generate_map_html()
     
-    # 3. Save directly to index.html for GitHub Pages deployment
+    # 2. Build and save index.html
+    map_html = generate_map_html()
     with open("index.html", "w", encoding="utf-8") as f:
         f.write(map_html)
-        
-    # 4. Save optional backup copy
-    with open("almaty_pm25_map.html", "w", encoding="utf-8") as f:
-        f.write(map_html)
-        
-    print("✅ index.html and almaty_pm25_map.html generated successfully!")
-    app.run(host="127.0.0.1", port=5000, debug=True)
+    print("✅ index.html generated successfully!")
+
+    # 3. ONLY run Flask locally (GitHub Actions skips this block)
+    if not os.environ.get("GITHUB_ACTIONS"):
+        app.run(host="127.0.0.1", port=5000, debug=True)

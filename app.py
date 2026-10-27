@@ -472,4 +472,16 @@ def cron_trigger():
 
 if __name__ == "__main__":
     fetch_and_update_data()
+    # 2. Generate the HTML map string
+    map_html = generate_map_html()
+    
+    # 3. Save directly to index.html for GitHub Pages deployment
+    with open("index.html", "w", encoding="utf-8") as f:
+        f.write(map_html)
+        
+    # 4. Save optional backup copy
+    with open("almaty_pm25_map.html", "w", encoding="utf-8") as f:
+        f.write(map_html)
+        
+    print("✅ index.html and almaty_pm25_map.html generated successfully!")
     app.run(host="127.0.0.1", port=5000, debug=True)

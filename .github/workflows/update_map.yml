@@ -39,7 +39,7 @@ jobs:
         env:
           AAI_API_KEY: ${{ secrets.AAI_API_KEY }}
         run: |
-          python almaty_pm25_map.py
+          python app.py
 
       - name: Commit and Push Updated Data (Safe Add)
         run: |

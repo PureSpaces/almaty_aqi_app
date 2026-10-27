@@ -1,0 +1,39 @@
+name: Hourly Air Quality Map Update
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Runs at the top of every hour (UTC)
+  workflow_dispatch:      # Enables manual "Run workflow" button in GitHub
+
+jobs:
+  update-and-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas folium requests flask numpy
+
+      - name: Execute Map Generator
+        env:
+          AAI_API_KEY: ${{ secrets.AAI_API_KEY }}
+        run: |
+          python almaty_pm25_map.py
+
+      - name: Commit and Push Updated Map & Data
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add almaty_pm25_data.csv factory_pm25_predictions.csv index.html
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update PM2.5 data and map [skip ci]" && git push)

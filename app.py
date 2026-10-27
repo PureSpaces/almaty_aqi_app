@@ -164,7 +164,7 @@ def fetch_and_update_data():
             print("⚠ API returned empty dataset.")
             return
 
-        if os.path.exists(CSV_FILE):
+        if os.path.exists(CSV_FILE) and os.path.getsize(CSV_FILE) > 0:
             existing_df = pd.read_csv(CSV_FILE)
             combined_df = pd.concat([existing_df, new_df], ignore_index=True)
             combined_df.drop_duplicates(

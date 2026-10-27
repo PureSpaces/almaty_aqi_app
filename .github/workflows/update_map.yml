@@ -2,8 +2,8 @@ name: Hourly Air Quality Map Update & Deploy
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Runs every hour
-  workflow_dispatch:      # Allows manual trigger from GitHub UI
+    - cron: '0 * * * *'  # Runs automatically at minute 0 of every hour
+  workflow_dispatch:      # Allows manual trigger anytime from GitHub UI
 
 permissions:
   contents: write
@@ -41,17 +41,17 @@ jobs:
         run: |
           python app.py
 
-      - name: Commit and Push Updated Data (Safe Add)
+      - name: Commit Updated CSVs and index.html
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Only add files if they exist
-          if [ -f "index.html" ]; then git add index.html; fi
+          # Stage generated files
+          git add index.html
           if [ -f "almaty_pm25_data.csv" ]; then git add almaty_pm25_data.csv; fi
           if [ -f "factory_pm25_predictions.csv" ]; then git add factory_pm25_predictions.csv; fi
           
-          # Commit only if there are pending changes
+          # Commit changes if files were updated ([skip ci] prevents infinite build loops)
           git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update PM2.5 data [skip ci]" && git push)
 
       - name: Setup Pages

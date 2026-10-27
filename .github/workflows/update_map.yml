@@ -2,8 +2,8 @@ name: Hourly Air Quality Map Update & Deploy
 
 on:
   schedule:
-    - cron: '0 * * * *'  # Runs at minute 0 of every hour
-  workflow_dispatch:      # Allows manual trigger button in GitHub UI
+    - cron: '0 * * * *'  # Runs every hour
+  workflow_dispatch:      # Allows manual trigger from GitHub UI
 
 permissions:
   contents: write
@@ -22,48 +22,46 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout repository code
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # 2. Set up Python environment
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
-      # 3. Install required Python packages
       - name: Install Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install pandas folium requests flask numpy
 
-      # 4. Run your data fetch & map generator script
       - name: Execute Map Generator
         env:
           AAI_API_KEY: ${{ secrets.AAI_API_KEY }}
         run: |
           python almaty_pm25_map.py
 
-      # 5. Save updated CSV datasets back to repository
-      - name: Commit and Push Updated CSV Data
+      - name: Commit and Push Updated Data (Safe Add)
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add almaty_pm25_data.csv factory_pm25_predictions.csv index.html
+          
+          # Only add files if they exist
+          if [ -f "index.html" ]; then git add index.html; fi
+          if [ -f "almaty_pm25_data.csv" ]; then git add almaty_pm25_data.csv; fi
+          if [ -f "factory_pm25_predictions.csv" ]; then git add factory_pm25_predictions.csv; fi
+          
+          # Commit only if there are pending changes
           git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update PM2.5 data [skip ci]" && git push)
 
-      # 6. Configure Pages
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      # 7. Upload root directory containing index.html
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
 
-      # 8. Deploy directly to GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

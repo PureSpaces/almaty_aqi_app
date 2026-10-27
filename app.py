@@ -236,7 +236,7 @@ def log_factory_predictions(df):
                 })
 
     pred_df = pd.DataFrame(records)
-    if os.path.exists(FACTORY_CSV_FILE):
+    if os.path.exists(FACTORY_CSV_FILE) and os.path.getsize(FACTORY_CSV_FILE) > 0:
         existing_pred = pd.read_csv(FACTORY_CSV_FILE)
         combined_pred = pd.concat([existing_pred, pred_df], ignore_index=True)
         combined_pred.drop_duplicates(

@@ -26234,3 +26234,498 @@ date,hour,factory_name,sample_lat,sample_lon,distance_km,predicted_pm25,aqi_stat
 2026-10-29,22:00,Alatau Industrial Zone,43.3771,76.79332,7.0,124.21,Unhealthy
 2026-10-29,22:00,Alatau Industrial Zone,43.38039,76.8051,7.0,125.82,Unhealthy
 2026-10-29,22:00,Alatau Industrial Zone,43.38239,76.81742,7.0,129.99,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.2625,76.795,0.0,117.88,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.27151,76.795,1.0,113.1,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.26887,76.80373,1.0,116.2,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.2625,76.80735,1.0,119.87,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.25613,76.80373,1.0,118.17,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.25349,76.795,1.0,137.7,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.25613,76.78627,1.0,128.02,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.2625,76.78265,1.0,116.55,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.26887,76.78627,1.0,113.19,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.28052,76.795,2.0,110.93,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.2781,76.80735,2.0,113.09,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.27151,76.81638,2.0,124.66,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.2625,76.81969,2.0,155.36,Very Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.25349,76.81638,2.0,120.71,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.2469,76.80735,2.0,114.45,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.24448,76.795,2.0,163.18,Very Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.2469,76.78265,2.0,132.84,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.25349,76.77362,2.0,120.46,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.2625,76.77031,2.0,114.42,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.27151,76.77362,2.0,110.71,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.2781,76.78265,2.0,110.0,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.28953,76.795,3.0,109.83,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.2879,76.80767,3.0,110.36,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.2832,76.81881,3.0,97.31,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.27601,76.82708,3.0,108.92,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.26719,76.83147,3.0,156.66,Very Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.25781,76.83147,3.0,134.27,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.24899,76.82708,3.0,114.46,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.2418,76.81881,3.0,127.0,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.2371,76.80767,3.0,98.38,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.23547,76.795,3.0,106.88,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.2371,76.78233,3.0,112.58,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.2418,76.77119,3.0,130.01,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.24899,76.76292,3.0,143.78,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.25781,76.75853,3.0,119.1,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.26719,76.75853,3.0,111.12,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.27601,76.76292,3.0,108.68,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.2832,76.77119,3.0,108.24,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.2879,76.78233,3.0,108.76,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.29854,76.795,4.0,109.43,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.2974,76.80728,4.0,110.36,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.29408,76.81879,4.0,110.23,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.28877,76.8288,4.0,112.2,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.28181,76.8367,4.0,135.5,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.27364,76.84197,4.0,194.92,Very Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.26476,76.84429,4.0,151.41,Very Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.25575,76.84351,4.0,117.05,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.24716,76.83968,4.0,113.5,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.23953,76.83305,4.0,99.46,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.23335,76.82403,4.0,90.61,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.22899,76.81318,4.0,81.45,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.22675,76.80119,4.0,77.77,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.22675,76.78881,4.0,93.02,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.22899,76.77682,4.0,101.33,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.23335,76.76597,4.0,124.2,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.23953,76.75695,4.0,148.59,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.24716,76.75032,4.0,124.62,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.25575,76.74649,4.0,113.22,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.26476,76.74571,4.0,108.93,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.27364,76.74803,4.0,107.3,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.28181,76.7533,4.0,106.86,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.28877,76.7612,4.0,107.03,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.29408,76.77121,4.0,107.59,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.2974,76.78272,4.0,108.41,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.30755,76.795,5.0,109.41,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.30662,76.80743,5.0,110.33,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.30389,76.81934,5.0,111.08,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.29947,76.83026,5.0,110.21,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.29353,76.83974,5.0,137.83,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.28633,76.84739,5.0,198.96,Very Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.27814,76.85289,5.0,150.27,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.26932,76.85602,5.0,136.31,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.26022,76.85665,5.0,111.79,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.25121,76.85476,5.0,95.26,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.24266,76.85042,5.0,86.55,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.23493,76.84381,5.0,83.89,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.22832,76.83521,5.0,78.28,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.22312,76.82496,5.0,73.32,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.21952,76.81348,5.0,47.49,Sensitive Groups
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.21769,76.80124,5.0,58.8,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.21769,76.78876,5.0,72.47,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.21952,76.77652,5.0,96.5,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.22312,76.76504,5.0,101.29,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.22832,76.75479,5.0,111.66,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.23493,76.74619,5.0,113.03,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.24266,76.73958,5.0,109.5,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.25121,76.73524,5.0,106.86,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.26022,76.73335,5.0,105.54,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.26932,76.73398,5.0,105.09,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.27814,76.73711,5.0,105.17,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.28633,76.74261,5.0,105.56,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.29353,76.75026,5.0,106.13,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.29947,76.75974,5.0,106.82,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.30389,76.77066,5.0,107.6,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.30662,76.78257,5.0,108.47,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.31655,76.795,6.0,109.63,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.31578,76.80752,6.0,110.17,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.31347,76.81968,6.0,109.78,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.30969,76.83113,6.0,106.15,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.30456,76.84153,6.0,106.75,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.29821,76.85061,6.0,154.86,Very Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.29084,76.85808,6.0,169.79,Very Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.28265,76.86373,6.0,129.51,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.27389,76.86741,6.0,120.54,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.26479,76.86901,6.0,103.78,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.25563,76.86847,6.0,93.37,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.24667,76.86583,6.0,82.15,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.23816,76.86114,6.0,76.78,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.23036,76.85456,6.0,71.8,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.22348,76.84625,6.0,57.84,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.21772,76.83648,6.0,65.82,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.21324,76.82551,6.0,67.84,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.21019,76.81367,6.0,66.28,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.20864,76.80128,6.0,72.9,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.20864,76.78872,6.0,76.67,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.21019,76.77633,6.0,91.86,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.21324,76.76449,6.0,95.15,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.21772,76.75352,6.0,99.2,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.22348,76.74375,6.0,102.21,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.23036,76.73544,6.0,102.89,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.23816,76.72886,6.0,102.58,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.24667,76.72417,6.0,102.29,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.25563,76.72153,6.0,102.31,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.26479,76.72099,6.0,102.65,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.27389,76.72259,6.0,103.21,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.28265,76.72627,6.0,103.91,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.29084,76.73192,6.0,104.71,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.29821,76.73939,6.0,105.56,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.30456,76.74847,6.0,106.4,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.30969,76.75887,6.0,107.22,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.31347,76.77032,6.0,108.02,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.31578,76.78248,6.0,108.84,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.32556,76.795,7.0,110.11,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.32489,76.80758,7.0,110.3,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.32289,76.8199,7.0,108.45,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.3196,76.83168,7.0,99.39,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.31509,76.84268,7.0,107.43,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.30947,76.85267,7.0,123.54,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.30284,76.86143,7.0,133.66,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.29535,76.86877,7.0,131.01,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.28716,76.87454,7.0,114.77,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.27845,76.87861,7.0,103.31,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.2694,76.8809,7.0,97.5,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.2602,76.88136,7.0,82.49,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.25105,76.87998,7.0,75.93,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.24214,76.87679,7.0,68.32,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.23366,76.87186,7.0,66.49,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.22581,76.86528,7.0,58.65,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.21873,76.85721,7.0,53.2,Sensitive Groups
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.21259,76.84782,7.0,56.39,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.20751,76.8373,7.0,60.72,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.2036,76.82587,7.0,60.99,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.20095,76.81379,7.0,64.81,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.19961,76.80131,7.0,76.0,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.19961,76.78869,7.0,76.36,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.20095,76.77621,7.0,87.23,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.2036,76.76413,7.0,90.79,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.20751,76.7527,7.0,93.83,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.21259,76.74218,7.0,96.46,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.21873,76.73279,7.0,98.01,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.22581,76.72472,7.0,98.69,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.23366,76.71814,7.0,98.97,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.24214,76.71321,7.0,99.26,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.25105,76.71002,7.0,99.78,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.2602,76.70864,7.0,100.51,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.2694,76.7091,7.0,101.36,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.27845,76.71139,7.0,102.27,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.28716,76.71546,7.0,103.25,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.29535,76.72123,7.0,104.27,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.30284,76.72857,7.0,105.31,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.30947,76.73733,7.0,106.32,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.31509,76.74732,7.0,107.23,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.3196,76.75832,7.0,108.03,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.32289,76.7701,7.0,108.76,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.32489,76.78242,7.0,109.47,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.33457,76.795,8.0,110.93,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.334,76.80738,8.0,111.08,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.33231,76.81956,8.0,109.34,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.32951,76.83136,8.0,97.74,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.32566,76.84258,8.0,79.35,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.32081,76.85305,8.0,117.7,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.31504,76.86261,8.0,133.32,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.30844,76.8711,8.0,154.45,Very Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.30112,76.87839,8.0,149.17,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.29319,76.88437,8.0,120.16,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.28477,76.88893,8.0,107.33,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.276,76.89202,8.0,117.83,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.26703,76.89357,8.0,96.2,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.25797,76.89357,8.0,78.74,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.249,76.89202,8.0,67.91,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.24023,76.88893,8.0,63.75,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.23181,76.88437,8.0,62.99,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.22388,76.87839,8.0,59.29,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.21656,76.8711,8.0,39.31,Sensitive Groups
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.20996,76.86261,8.0,55.13,Sensitive Groups
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.20419,76.85305,8.0,57.95,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.19934,76.84258,8.0,58.98,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.19549,76.83136,8.0,53.17,Sensitive Groups
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.19269,76.81956,8.0,46.57,Sensitive Groups
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.191,76.80738,8.0,70.51,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.19043,76.795,8.0,87.44,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.191,76.78262,8.0,90.94,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.19269,76.77044,8.0,84.16,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.19549,76.75864,8.0,87.5,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.19934,76.74742,8.0,91.35,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.20419,76.73695,8.0,93.75,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.20996,76.72739,8.0,95.23,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.21656,76.7189,8.0,96.04,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.22388,76.71161,8.0,96.38,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.23181,76.70563,8.0,96.52,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.24023,76.70107,8.0,96.96,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.249,76.69798,8.0,97.84,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.25797,76.69643,8.0,98.9,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.26703,76.69643,8.0,99.97,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.276,76.69798,8.0,101.02,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.28477,76.70107,8.0,102.08,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.29319,76.70563,8.0,103.18,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.30112,76.71161,8.0,104.32,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.30844,76.7189,8.0,105.52,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.31504,76.72739,8.0,106.71,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.32081,76.73695,8.0,107.75,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.32566,76.74742,8.0,108.58,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.32951,76.75864,8.0,109.24,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.33231,76.77044,8.0,109.81,Unhealthy
+2026-10-29,23:00,CHP-2 Power Plant Zone (TETS-2),43.334,76.78262,8.0,110.39,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.278,76.928,0.0,83.53,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.28701,76.928,1.0,95.33,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.28437,76.93673,1.0,88.8,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.278,76.94035,1.0,79.35,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.27163,76.93673,1.0,75.23,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.26899,76.928,1.0,72.45,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.27163,76.91927,1.0,77.39,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.278,76.91565,1.0,86.98,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.28437,76.91927,1.0,92.03,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.29602,76.928,2.0,111.18,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.2936,76.94035,2.0,101.44,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.28701,76.94938,2.0,81.23,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.278,76.95269,2.0,78.75,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.26899,76.94938,2.0,73.96,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.2624,76.94035,2.0,68.99,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.25998,76.928,2.0,65.54,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.2624,76.91565,2.0,64.19,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.26899,76.90662,2.0,83.86,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.278,76.90331,2.0,94.63,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.28701,76.90662,2.0,98.49,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.2936,76.91565,2.0,75.92,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.30503,76.928,3.0,134.87,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.3034,76.94067,3.0,120.4,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.2987,76.95181,3.0,103.39,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.29151,76.96008,3.0,91.1,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.28269,76.96447,3.0,77.95,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.27331,76.96447,3.0,71.67,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.26449,76.96008,3.0,73.86,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.2573,76.95181,3.0,65.53,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.2526,76.94067,3.0,58.49,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.25097,76.928,3.0,61.2,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.2526,76.91533,3.0,56.31,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.2573,76.90419,3.0,64.31,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.26449,76.89592,3.0,93.49,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.27331,76.89153,3.0,126.59,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.28269,76.89153,3.0,106.31,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.29151,76.89592,3.0,110.53,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.2987,76.90419,3.0,113.35,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.3034,76.91533,3.0,120.95,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.31404,76.928,4.0,129.07,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.3129,76.94028,4.0,149.45,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.30958,76.95179,4.0,99.45,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.30427,76.9618,4.0,108.96,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.29731,76.9697,4.0,94.76,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.28914,76.97497,4.0,55.34,Sensitive Groups
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.28026,76.97729,4.0,65.78,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.27125,76.97651,4.0,56.8,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.26266,76.97268,4.0,44.87,Sensitive Groups
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.25503,76.96605,4.0,62.83,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.24885,76.95703,4.0,55.1,Sensitive Groups
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.24449,76.94618,4.0,52.36,Sensitive Groups
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.24225,76.93419,4.0,47.87,Sensitive Groups
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.24225,76.92181,4.0,50.3,Sensitive Groups
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.24449,76.90982,4.0,48.67,Sensitive Groups
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.24885,76.89897,4.0,64.49,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.25503,76.88995,4.0,74.91,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.26266,76.88332,4.0,80.32,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.27125,76.87949,4.0,100.27,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.28026,76.87871,4.0,102.33,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.28914,76.88103,4.0,113.14,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.29731,76.8863,4.0,129.44,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.30427,76.8942,4.0,131.99,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.30958,76.90421,4.0,133.34,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.3129,76.91572,4.0,127.49,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.32305,76.928,5.0,136.75,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.32212,76.94043,5.0,162.42,Very Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.31939,76.95234,5.0,118.38,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.31497,76.96326,5.0,134.66,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.30903,76.97274,5.0,121.93,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.30183,76.98039,5.0,105.14,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.29364,76.98589,5.0,85.31,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.28482,76.98902,5.0,73.41,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.27572,76.98965,5.0,62.5,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.26671,76.98776,5.0,40.29,Sensitive Groups
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.25816,76.98342,5.0,57.83,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.25043,76.97681,5.0,61.24,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.24382,76.96821,5.0,53.44,Sensitive Groups
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.23862,76.95796,5.0,46.83,Sensitive Groups
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.23502,76.94648,5.0,44.46,Sensitive Groups
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.23319,76.93424,5.0,44.3,Sensitive Groups
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.23319,76.92176,5.0,49.71,Sensitive Groups
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.23502,76.90952,5.0,44.79,Sensitive Groups
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.23862,76.89804,5.0,53.06,Sensitive Groups
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.24382,76.88779,5.0,65.11,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.25043,76.87919,5.0,76.11,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.25816,76.87258,5.0,96.98,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.26671,76.86824,5.0,109.55,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.27572,76.86635,5.0,122.85,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.28482,76.86698,5.0,124.21,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.29364,76.87011,5.0,128.09,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.30183,76.87561,5.0,147.51,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.30903,76.88326,5.0,197.49,Very Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.31497,76.89274,5.0,147.48,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.31939,76.90366,5.0,137.31,Unhealthy
+2026-10-29,23:00,CHP-1 Power Plant Zone (TETS-1),43.32212,76.91557,5.0,141.58,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.32,76.83,0.0,101.42,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.32901,76.83,1.0,99.69,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.32637,76.83873,1.0,73.2,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.32,76.84235,1.0,91.28,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.31363,76.83873,1.0,105.98,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.31099,76.83,1.0,107.07,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.31363,76.82127,1.0,109.48,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.32,76.81765,1.0,109.31,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.32637,76.82127,1.0,107.81,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.33802,76.83,2.0,108.08,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.3356,76.84235,2.0,104.53,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.32901,76.85138,2.0,112.24,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.32,76.85469,2.0,120.7,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.31099,76.85138,2.0,122.59,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.3044,76.84235,2.0,110.78,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.30198,76.83,2.0,107.53,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.3044,76.81765,2.0,111.0,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.31099,76.80862,2.0,110.3,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.32,76.80531,2.0,110.16,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.32901,76.80862,2.0,110.53,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.3356,76.81765,2.0,110.52,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.34703,76.83,3.0,114.2,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.3454,76.84267,3.0,115.28,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.3407,76.85381,3.0,119.25,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.33351,76.86208,3.0,126.06,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.32469,76.86647,3.0,134.26,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.31531,76.86647,3.0,140.39,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.30649,76.86208,3.0,133.09,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.2993,76.85381,3.0,141.57,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.2946,76.84267,3.0,150.42,Very Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.29297,76.83,3.0,116.28,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.2946,76.81733,3.0,110.34,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.2993,76.80619,3.0,110.3,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.30649,76.79792,3.0,109.63,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.31531,76.79353,3.0,109.5,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.32469,76.79353,3.0,109.99,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.33351,76.79792,3.0,110.91,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.3407,76.80619,3.0,112.06,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.3454,76.81733,3.0,113.27,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.35604,76.83,4.0,119.36,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.3549,76.84228,4.0,120.51,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.35158,76.85379,4.0,121.96,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.34627,76.8638,4.0,125.74,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.33931,76.8717,4.0,132.0,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.33114,76.87697,4.0,144.06,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.32226,76.87929,4.0,163.2,Very Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.31325,76.87851,4.0,164.86,Very Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.30466,76.87468,4.0,154.23,Very Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.29703,76.86805,4.0,132.98,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.29085,76.85903,4.0,161.36,Very Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.28649,76.84818,4.0,208.37,Very Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.28425,76.83619,4.0,132.36,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.28425,76.82381,4.0,87.58,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.28649,76.81182,4.0,109.26,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.29085,76.80097,4.0,110.2,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.29703,76.79195,4.0,109.2,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.30466,76.78532,4.0,108.63,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.31325,76.78149,4.0,108.64,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.32226,76.78071,4.0,109.17,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.33114,76.78303,4.0,110.09,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.33931,76.7883,4.0,111.24,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.34627,76.7962,4.0,112.56,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.35158,76.80621,4.0,114.19,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.3549,76.81772,4.0,116.54,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.36505,76.83,5.0,126.87,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.36412,76.84243,5.0,127.11,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.36139,76.85434,5.0,124.69,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.35697,76.86526,5.0,126.32,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.35103,76.87474,5.0,129.97,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.34383,76.88239,5.0,135.28,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.33564,76.88789,5.0,143.33,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.32682,76.89102,5.0,162.66,Very Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.31772,76.89165,5.0,157.62,Very Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.30871,76.88976,5.0,150.37,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.30016,76.88542,5.0,141.13,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.29243,76.87881,5.0,120.88,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.28582,76.87021,5.0,119.28,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.28062,76.85996,5.0,136.49,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.27702,76.84848,5.0,167.45,Very Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.27519,76.83624,5.0,144.77,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.27519,76.82376,5.0,107.36,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.27702,76.81152,5.0,113.63,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.28062,76.80004,5.0,111.54,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.28582,76.78979,5.0,109.65,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.29243,76.78119,5.0,108.41,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.30016,76.77458,5.0,107.79,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.30871,76.77024,5.0,107.76,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.31772,76.76835,5.0,108.23,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.32682,76.76898,5.0,109.12,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.33564,76.77211,5.0,110.29,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.34383,76.77761,5.0,111.59,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.35103,76.78526,5.0,112.91,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.35697,76.79474,5.0,114.34,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.36139,76.80566,5.0,116.39,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.36412,76.81757,5.0,120.27,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.37405,76.83,6.0,138.32,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.37328,76.84252,6.0,138.06,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.37097,76.85468,6.0,127.72,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.36719,76.86613,6.0,127.48,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.36206,76.87653,6.0,129.74,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.35571,76.88561,6.0,132.93,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.34834,76.89308,6.0,137.38,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.34015,76.89873,6.0,143.08,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.33139,76.90241,6.0,140.45,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.32229,76.90401,6.0,139.73,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.31313,76.90347,6.0,135.66,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.30417,76.90083,6.0,125.89,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.29566,76.89614,6.0,115.94,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.28786,76.88956,6.0,109.65,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.28098,76.88125,6.0,101.16,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.27522,76.87148,6.0,110.91,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.27074,76.86051,6.0,148.39,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.26769,76.84867,6.0,163.67,Very Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.26614,76.83628,6.0,162.76,Very Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.26614,76.82372,6.0,140.03,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.26769,76.81133,6.0,124.91,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.27074,76.79949,6.0,114.13,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.27522,76.78852,6.0,111.25,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.28098,76.77875,6.0,109.16,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.28786,76.77044,6.0,107.78,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.29566,76.76386,6.0,107.05,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.30417,76.75917,6.0,106.94,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.31313,76.75653,6.0,107.37,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.32229,76.75599,6.0,108.26,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.33139,76.75759,6.0,109.5,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.34015,76.76127,6.0,110.95,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.34834,76.76692,6.0,112.46,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.35571,76.77439,6.0,113.87,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.36206,76.78347,6.0,115.03,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.36719,76.79387,6.0,116.23,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.37097,76.80532,6.0,118.45,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.37328,76.81748,6.0,123.9,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.38306,76.83,7.0,138.62,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.38239,76.84258,7.0,139.74,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.38039,76.8549,7.0,129.68,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.3771,76.86668,7.0,129.06,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.37259,76.87768,7.0,130.93,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.36697,76.88767,7.0,133.07,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.36034,76.89643,7.0,135.59,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.35285,76.90377,7.0,140.77,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.34466,76.90954,7.0,148.48,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.33595,76.91361,7.0,139.04,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.3269,76.9159,7.0,141.37,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.3177,76.91636,7.0,133.06,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.30855,76.91498,7.0,124.17,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.29964,76.91179,7.0,106.9,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.29116,76.90686,7.0,100.55,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.28331,76.90028,7.0,100.52,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.27623,76.89221,7.0,116.42,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.27009,76.88282,7.0,99.01,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.26501,76.8723,7.0,99.65,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.2611,76.86087,7.0,109.66,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.25845,76.84879,7.0,117.2,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.25711,76.83631,7.0,129.34,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.25711,76.82369,7.0,126.5,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.25845,76.81121,7.0,121.91,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.2611,76.79913,7.0,117.93,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.26501,76.7877,7.0,115.71,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.27009,76.77718,7.0,111.52,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.27623,76.76779,7.0,109.04,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.28331,76.75972,7.0,107.3,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.29116,76.75314,7.0,106.35,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.29964,76.74821,7.0,106.14,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.30855,76.74502,7.0,106.53,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.3177,76.74364,7.0,107.43,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.3269,76.7441,7.0,108.77,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.33595,76.74639,7.0,110.45,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.34466,76.75046,7.0,112.27,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.35285,76.75623,7.0,114.11,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.36034,76.76357,7.0,115.88,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.36697,76.77233,7.0,117.16,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.37259,76.78232,7.0,117.59,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.3771,76.79332,7.0,118.02,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.38039,76.8051,7.0,119.92,Unhealthy
+2026-10-29,23:00,Alatau Industrial Zone,43.38239,76.81742,7.0,125.3,Unhealthy
